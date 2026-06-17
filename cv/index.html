@@ -3,108 +3,389 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Ali Hassan - Undergraduate Computer Science student at Beirut Arab University, passionate about software development and problem solving."
-  />
-  <title>Ali Hassan CV</title>
+  <meta name="description" content="Ali Hassan — Computer Science undergraduate at Beirut Arab University. Passionate about software development, algorithms, and problem solving." />
+  <title>Ali Hassan · CV</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Extra styles that extend your style.css without changing it -->
+  <style>
+    /* ── Smooth scroll ── */
+    html { scroll-behavior: smooth; }
+
+    /* ── Avatar initials circle ── */
+    .avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(127,119,221,0.25);
+      border: 2px solid rgba(127,119,221,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; font-weight: 700; color: #b8b3f0;
+      margin: 0 auto 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    /* ── Badge chips ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(127,119,221,0.12);
+      color: #7f77dd;
+      border: 1px solid rgba(127,119,221,0.3);
+      border-radius: 999px;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px;
+      margin: 3px 2px;
+      white-space: nowrap;
+    }
+
+    /* ── Section icon accent ── */
+    .section-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px;
+      background: rgba(127,119,221,0.12);
+      border-radius: 6px;
+      font-size: 0.8rem; color: #7f77dd;
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 1.4rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 4px; top: 6px; bottom: 6px;
+      width: 2px; background: linear-gradient(to bottom, #7f77dd, rgba(127,119,221,0.1));
+      border-radius: 2px;
+    }
+    .timeline-item { position: relative; margin-bottom: 1.4rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: -1.4rem; top: 5px;
+      width: 10px; height: 10px;
+      background: #7f77dd; border-radius: 50%;
+      border: 2px solid #f0f2f5;
+      box-shadow: 0 0 0 3px rgba(127,119,221,0.2);
+    }
+    .timeline-org {
+      font-size: 0.95rem; font-weight: 700; color: #222;
+      margin-bottom: 2px;
+    }
+    .timeline-role {
+      font-size: 0.78rem; font-weight: 600;
+      color: #7f77dd; margin-bottom: 0.5rem;
+      text-transform: uppercase; letter-spacing: 0.8px;
+    }
+
+    /* ── Skill bars ── */
+    .skill-bar-wrap { margin-bottom: 0.85rem; }
+    .skill-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.8rem; color: #555; margin-bottom: 5px;
+    }
+    .skill-bar-track {
+      height: 6px; background: #eee;
+      border-radius: 999px; overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%; background: #7f77dd;
+      border-radius: 999px;
+      transition: width 1s ease;
+    }
+
+    /* ── Language dots ── */
+    .lang-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.88rem; color: #444;
+    }
+    .lang-row:last-child { border-bottom: none; }
+    .lang-dots { display: flex; gap: 5px; }
+    .dot {
+      width: 9px; height: 9px; border-radius: 50%;
+    }
+    .dot.on  { background: #7f77dd; }
+    .dot.off { background: #e0e0e0; }
+
+    /* ── Contact rows ── */
+    .contact-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 0.85rem; color: #555;
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item .icon-circle {
+      width: 34px; height: 34px;
+      background: rgba(127,119,221,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; color: #7f77dd; flex-shrink: 0;
+    }
+    .contact-item a { color: #7f77dd; word-break: break-all; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* ── GPA highlight ── */
+    .gpa-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(127,119,221,0.1);
+      color: #7f77dd;
+      border: 1px solid rgba(127,119,221,0.25);
+      border-radius: 999px;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 4px 14px;
+      margin-top: 10px;
+    }
+
+    /* ── Footer links ── */
+    footer a { color: rgba(255,255,255,0.45); }
+    footer a:hover { color: #7f77dd; }
+
+    /* ── Sticky nav override ── */
+    .header__nav-list { position: sticky; top: 0; z-index: 100; }
+
+    /* ── "Available for work" pill in header ── */
+    .available-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(29,158,117,0.15);
+      border: 1px solid rgba(29,158,117,0.3);
+      color: #1d9e75;
+      border-radius: 999px;
+      font-size: 0.72rem; font-weight: 600;
+      padding: 4px 12px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+    .available-pill .pulse {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #1d9e75;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    /* ── Responsive tweaks ── */
+    @media (max-width: 600px) {
+      .avatar { width: 64px; height: 64px; font-size: 1.2rem; }
+      .timeline { padding-left: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
- 
 
+  <!-- ══════════════ HEADER ══════════════ -->
   <header class="header">
-    <h1 class="header__title">ALI HASSAN</h1>
-    <h2>UNDERGRADUATE - COMPUTER SCIENCE</h2>
-    <nav class="header__nav-list">
+    <div class="avatar">AH</div>
+
+    <div class="available-pill">
+      <span class="pulse"></span> Available for opportunities
+    </div>
+
+    <h1 class="header__title">Ali Hassan</h1>
+    <h2>Undergraduate · Computer Science</h2>
+
+    <!-- STICKY NAV -->
+    <nav class="header__nav-list" aria-label="Page sections">
       <ul class="nav-list">
-        <li><a class="nav-list__link nav-list__link--active" href="#profile">Profile</a></li>
-        <li><a class="nav-list__link" href="#experience">Experience</a></li>
-        <li><a class="nav-list__link" href="#education">Education</a></li>
-        <li><a class="nav-list__link" href="#contact">Contact</a></li>
-        <li><a class="nav-list__link" href="#skills">Skills</a></li>
-        <li><a class="nav-list__link" href="#languages">Languages</a></li>
+        <li><a class="nav-list__link nav-list__link--active" href="#profile">
+          <i class="fa-solid fa-user" style="margin-right:5px;font-size:0.75em"></i>Profile</a></li>
+        <li><a class="nav-list__link" href="#experience">
+          <i class="fa-solid fa-briefcase" style="margin-right:5px;font-size:0.75em"></i>Experience</a></li>
+        <li><a class="nav-list__link" href="#education">
+          <i class="fa-solid fa-graduation-cap" style="margin-right:5px;font-size:0.75em"></i>Education</a></li>
+        <li><a class="nav-list__link" href="#skills">
+          <i class="fa-solid fa-code" style="margin-right:5px;font-size:0.75em"></i>Skills</a></li>
+        <li><a class="nav-list__link" href="#languages">
+          <i class="fa-solid fa-language" style="margin-right:5px;font-size:0.75em"></i>Languages</a></li>
+        <li><a class="nav-list__link" href="#contact">
+          <i class="fa-solid fa-envelope" style="margin-right:5px;font-size:0.75em"></i>Contact</a></li>
       </ul>
     </nav>
   </header>
 
+  <!-- ══════════════ MAIN ══════════════ -->
   <main class="main">
     <div class="container">
-      <!-- LEFT COLUMN -->
+
+      <!-- ▸ LEFT / MAIN COLUMN -->
       <aside class="right-column">
-        <section class="profile" id="profile">
-          <h2>PROFILE</h2>
+
+        <!-- PROFILE -->
+        <section id="profile">
+          <h2>
+            <span class="section-icon"><i class="fa-solid fa-user"></i></span>
+            Profile
+          </h2>
           <p>
-            Motivated and detail-oriented Computer Science student at Beirut Arab
-            University (BAU) with a strong passion for software development,
-            problem solving, and emerging technologies. I’m learning programming
-            languages such as Java and C++, with experience in web development,
-            databases, and algorithms. Adept at working in team environments and
-            continuously learning new technologies to enhance my expertise. Looking
-            for opportunities to apply my knowledge in real-world projects and
-            further develop my technical and problem-solving skills.
+            Motivated and detail-oriented Computer Science student at Beirut Arab University
+            with a strong passion for software development, problem solving, and emerging
+            technologies. Currently building expertise in Java, C++, and Python, with
+            hands-on experience in web development, databases, and algorithms. Adept at
+            working in team environments and continuously expanding technical skills.
+            Actively seeking real-world opportunities to apply and grow my knowledge.
           </p>
+
+          <!-- Tech badge chips -->
+          <div style="margin-top:1rem">
+            <span class="badge"><i class="fa-brands fa-java"></i> Java</span>
+            <span class="badge"><i class="fa-solid fa-c"></i> C++</span>
+            <span class="badge"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="badge"><i class="fa-solid fa-database"></i> Databases</span>
+            <span class="badge"><i class="fa-solid fa-globe"></i> Web Dev</span>
+            <span class="badge"><i class="fa-solid fa-diagram-project"></i> Algorithms</span>
+            <span class="badge">Verilog</span>
+          </div>
         </section>
 
-        <section class="experience" id="experience">
-          <h2>EXPERIENCE</h2>
-          <p>LAU SOFTWARE INSTITUTE<br />
-            Certificate in the Learn, Code, and Compete Competition</p>
-          <ul>
-            <li><strong>Programming Languages:</strong> Python, Java, C++, Verilog.</li>
-            <li><strong>Competitive Programming:</strong> Coding strategies & challenges.</li>
-            <li><strong>Data Structures & Algorithms:</strong> Arrays, trees, graphs, etc.</li>
-            <li><strong>Team Collaboration:</strong> Worked with mentors & organizers.</li>
-            <li><strong>Public Speaking:</strong> Presented coding concepts clearly.</li>
-          </ul>
+        <!-- EXPERIENCE -->
+        <section id="experience">
+          <h2>
+            <span class="section-icon"><i class="fa-solid fa-briefcase"></i></span>
+            Experience
+          </h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-org">LAU Software Institute</div>
+              <div class="timeline-role">
+                <i class="fa-solid fa-certificate" style="margin-right:4px"></i>
+                Certificate — Learn, Code &amp; Compete
+              </div>
+              <ul>
+                <li><strong>Programming languages</strong> — Python, Java, C++, Verilog</li>
+                <li><strong>Competitive programming</strong> — advanced coding strategies and algorithmic challenges</li>
+                <li><strong>Data structures &amp; algorithms</strong> — arrays, linked lists, trees, and graphs</li>
+                <li><strong>Team collaboration</strong> — partnered with mentors and peer organizers</li>
+                <li><strong>Public speaking</strong> — presented technical concepts clearly to audiences</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        <section class="education" id="education">
-          <h2>EDUCATION</h2>
-          <p>
-            Undergraduate Computer Science student<br />
-            Faculty of Science | Beirut Arab University <br />
-            GPA: 3 / 4.0
-          </p>
+        <!-- EDUCATION -->
+        <section id="education">
+          <h2>
+            <span class="section-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+            Education
+          </h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-org">Beirut Arab University</div>
+              <div class="timeline-role">
+                <i class="fa-solid fa-flask" style="margin-right:4px"></i>
+                BSc Computer Science · Faculty of Science
+              </div>
+              <p style="font-size:0.88rem;color:#666">Currently enrolled · Expected graduation 2026</p>
+              <div>
+                <span class="gpa-badge">
+                  <i class="fa-solid fa-star"></i> GPA 3.0 / 4.0
+                </span>
+              </div>
+            </div>
+          </div>
         </section>
+
       </aside>
 
-      <!-- RIGHT COLUMN -->
+      <!-- ▸ RIGHT / SIDEBAR COLUMN -->
       <aside class="left-column">
-        <section class="contact" id="contact">
-          <h2>CONTACT</h2>
-          <p>Phone: <a href="tel:+96176777251">+961 76 777 251</a></p>
-          <p>Email: <a href="mailto:alihassan76118@gmail.com">alihassan76118@gmail.com</a></p>
-          <p>Beirut, Lebanon</p>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <h2>
+            <span class="section-icon"><i class="fa-solid fa-address-card"></i></span>
+            Contact
+          </h2>
+          <div class="contact-item">
+            <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+            <div><a href="tel:+96176777251">+961 76 777 251</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+            <div><a href="mailto:alihassan76118@gmail.com">alihassan76118@gmail.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon-circle"><i class="fa-solid fa-location-dot"></i></div>
+            <div>Beirut, Lebanon</div>
+          </div>
         </section>
 
-        <section class="languages" id="languages">
-          <h2>LANGUAGES</h2>
-          <ul>
-            <li>English</li>
-            <li>Arabic</li>
-          </ul>
+        <!-- SKILLS (with progress bars) -->
+        <section id="skills">
+          <h2>
+            <span class="section-icon"><i class="fa-solid fa-code"></i></span>
+            Technical Skills
+          </h2>
+
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Python</span><span>80%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Java</span><span>70%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>C++</span><span>65%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:65%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Web Development</span><span>60%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:60%"></div></div>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-label"><span>Databases / SQL</span><span>55%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width:55%"></div></div>
+          </div>
+
+          <div style="margin-top:1rem">
+            <p style="font-size:0.78rem;color:#999;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.5rem;font-weight:600">Soft Skills</p>
+            <span class="badge"><i class="fa-solid fa-puzzle-piece"></i> Problem Solving</span>
+            <span class="badge"><i class="fa-solid fa-users"></i> Teamwork</span>
+            <span class="badge"><i class="fa-solid fa-clock"></i> Time Management</span>
+            <span class="badge"><i class="fa-solid fa-comments"></i> Communication</span>
+            <span class="badge"><i class="fa-solid fa-rotate"></i> Adaptability</span>
+          </div>
         </section>
 
-        <section class="skills" id="skills">
-          <h2>SKILLS</h2>
-          <ul>
-            <li>Problem-Solving & Critical Thinking</li>
-            <li>Teamwork & Collaboration</li>
-            <li>Time Management & Organization</li>
-            <li>Communication & Technical Writing</li>
-            <li>Adaptability & Continuous Learning</li>
-          </ul>
+        <!-- LANGUAGES -->
+        <section id="languages">
+          <h2>
+            <span class="section-icon"><i class="fa-solid fa-language"></i></span>
+            Languages
+          </h2>
+          <div class="lang-row">
+            <span>Arabic</span>
+            <div class="lang-dots">
+              <div class="dot on"></div><div class="dot on"></div>
+              <div class="dot on"></div><div class="dot on"></div>
+              <div class="dot on"></div>
+            </div>
+          </div>
+          <div class="lang-row">
+            <span>English</span>
+            <div class="lang-dots">
+              <div class="dot on"></div><div class="dot on"></div>
+              <div class="dot on"></div><div class="dot on"></div>
+              <div class="dot off"></div>
+            </div>
+          </div>
         </section>
+
       </aside>
     </div>
   </main>
 
+  <!-- ══════════════ FOOTER ══════════════ -->
   <footer>
-    <p>&copy; 2025 Ali Hassan</p>
+    <p>
+      <i class="fa-solid fa-code" style="margin-right:6px;color:#7f77dd"></i>
+      &copy; 2025 Ali Hassan &nbsp;·&nbsp;
+      <a href="mailto:alihassan76118@gmail.com">alihassan76118@gmail.com</a>
+      &nbsp;·&nbsp; Beirut, Lebanon
+    </p>
   </footer>
-  
-
 
 </body>
 </html>
