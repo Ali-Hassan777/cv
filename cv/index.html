@@ -148,3 +148,591 @@
 </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ali Hassan — Computer Science undergraduate at Beirut Arab University." />
+  <title>Ali Hassan · CV</title>
+  
+  <!-- Modern Professional Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ══ CSS VARIABLES FOR SEAMLESS THEMING ══ */
+    :root {
+      --primary: #7f77dd;
+      --primary-hover: #6a62c7;
+      --primary-light: rgba(127, 119, 221, 0.1);
+      
+      /* Light Theme */
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+    }
+
+    body.dark {
+      /* Dark Theme */
+      --bg-body: #0f172a;
+      --bg-card: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-light: #64748b;
+      --border: #334155;
+    }
+
+    /* ══ RESET OVERRIDES ══ */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      margin: 0; 
+      overflow-x: hidden; 
+      font-family: 'Inter', sans-serif; 
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    /* ════════════════════════════════
+       PAGE 1 — FULL SCREEN HERO
+    ════════════════════════════════ */
+    .page-hero {
+      min-height: 100vh;
+      background: #0f172a; /* Always dark for impact */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
+      position: relative;
+      overflow: hidden;
+      color: #f8fafc;
+    }
+
+    /* Refined animated background orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.15;
+      animation: drift 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+    .orb-1 { width: 500px; height: 500px; background: #7f77dd; top: -150px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: #38bdf8; bottom: -100px; right: -100px; animation-delay: 2s; }
+    @keyframes drift {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(40px, -40px) scale(1.1); }
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 800px; width: 100%; }
+
+    .avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: rgba(127,119,221,0.1);
+      border: 2px solid rgba(127,119,221,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; font-weight: 700; color: #a5a0ea;
+      margin: 0 auto 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 40px rgba(127,119,221,0.2);
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800; 
+      letter-spacing: -1px; 
+      margin: 0 0 0.5rem 0;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 0%, #a5a0ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: #94a3b8;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .hero-bio {
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      color: #cbd5e1;
+      line-height: 1.8; 
+      margin: 0 auto 2.5rem;
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    .hero-contacts { 
+      display: flex; flex-wrap: wrap; justify-content: center; 
+      gap: 1.5rem; margin-bottom: 3.5rem; 
+    }
+    
+    .hero-contact-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.95rem; color: #cbd5e1;
+      transition: color 0.2s;
+    }
+    .hero-contact-item i { color: var(--primary); font-size: 1.1rem; }
+    .hero-contact-item a { color: inherit; text-decoration: none; transition: color 0.2s;}
+    .hero-contact-item a:hover { color: #fff; }
+
+    .hero-nav {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 1rem; margin-bottom: 3rem;
+    }
+    .hero-nav a {
+      color: #f8fafc;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; /* Modern rounded corners */
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-nav a:hover { 
+      background: var(--primary); 
+      border-color: var(--primary); 
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(127,119,221,0.2);
+    }
+
+    /* ════════════════════════════════
+       PAGE 2 — CV CONTENT
+    ════════════════════════════════ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      padding: 5rem 2rem;
+    }
+    
+    @media (max-width: 850px) {
+      .container { grid-template-columns: 1fr; }
+    }
+
+    /* Card styling for modern UI */
+    .card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      margin-bottom: 2rem;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      font-size: 1rem; color: var(--primary);
+    }
+
+    /* ── Timeline Redesign ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 6px; top: 8px; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item { position: relative; margin-bottom: 2rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    
+    .timeline-dot {
+      position: absolute; left: -2rem; top: 6px;
+      width: 14px; height: 14px;
+      background: var(--bg-card);
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+    .timeline-item:hover .timeline-dot {
+      background: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
+    }
+
+    .timeline-org {
+      font-size: 1.1rem; font-weight: 600; color: var(--text-main);
+      margin-bottom: 4px;
+    }
+    .timeline-role {
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--primary); margin-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .timeline-date {
+      font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; font-weight: 400;
+    }
+    .timeline-item ul {
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .timeline-item li { margin-bottom: 6px; }
+
+    /* ── Modern Skills Badges ── */
+    .skill-group { margin-bottom: 1.5rem; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-category {
+      font-size: 0.85rem; font-weight: 600; color: var(--text-main);
+      margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .skill-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .skill-tag {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .skill-tag:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ── Languages & Contact ── */
+    .info-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-label { color: var(--text-main); font-weight: 500; display: flex; align-items: center; gap: 12px; }
+    .info-value { color: var(--text-muted); }
+    
+    .info-row a { color: var(--text-muted); text-decoration: none; transition: color 0.2s;}
+    .info-row a:hover { color: var(--primary); }
+
+    .icon-circle {
+      width: 32px; height: 32px;
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: var(--primary); 
+    }
+
+    .gpa-badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 10px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    p.bio-text {
+      font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin: 0;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Fixed floating buttons ── */
+    .fab-container {
+      position: fixed; bottom: 2rem; right: 2rem;
+      display: flex; flex-direction: column; gap: 12px; z-index: 99;
+    }
+    .fab {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; cursor: pointer; border: none;
+      background: var(--bg-card); color: var(--text-main);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+    .fab:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); color: var(--primary); border-color: var(--primary); }
+    
+    footer { text-align: center; padding: 3rem 2rem; font-size: 0.9rem; color: var(--text-light); border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<!-- PAGE 1 · HERO -->
+<section class="page-hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="hero-content">
+    <div class="avatar">AH</div>
+    <h1 class="hero-name" id="hero-name">Ali Hassan</h1>
+    <p class="hero-title">Computer Science · Beirut Arab University</p>
+    
+    <p class="hero-bio">
+      A motivated CS undergraduate passionate about software development,
+      problem solving, and emerging technologies. Building expertise in
+      Java, C++, and Python — with hands-on experience in web development,
+      databases, and algorithms.
+    </p>
+
+    <div class="hero-contacts">
+      <div class="hero-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+96176777251">+961 76 777 251</a></div>
+      <div class="hero-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:alihassan76118@gmail.com">alihassan76118@gmail.com</a></div>
+      <div class="hero-contact-item"><i class="fa-solid fa-location-dot"></i><span>Beirut, Lebanon</span></div>
+    </div>
+
+    <nav class="hero-nav" aria-label="Jump to section">
+      <a href="#profile"><i class="fa-solid fa-user"></i>Profile</a>
+      <a href="#education"><i class="fa-solid fa-graduation-cap"></i>Education</a>
+      <a href="#projects"><i class="fa-solid fa-folder-open"></i>Projects</a>
+      <a href="#experience"><i class="fa-solid fa-briefcase"></i>Experience</a>
+    </nav>
+  </div>
+</section>
+
+<!-- PAGE 2 · CV CONTENT -->
+<main class="container">
+  
+  <!-- LEFT COLUMN (Main Content) -->
+  <div class="main-column">
+    
+    <section id="profile" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-user"></i></span> About Me</h2>
+      <p class="bio-text">
+        Motivated and detail-oriented Computer Science student at Beirut Arab
+        University with a strong passion for software development, problem
+        solving, and emerging technologies. Currently building expertise in
+        Java, C++, and Python, with hands-on experience in web development,
+        databases, and algorithms. Adept at working in team environments and
+        continuously expanding technical skills. Actively seeking real-world
+        opportunities to apply and grow my knowledge.
+      </p>
+    </section>
+
+    <section id="experience" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-briefcase"></i></span> Experience & Training</h2>
+
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-org">LAU Software Institute</div>
+          <div class="timeline-role"><i class="fa-solid fa-certificate"></i> Certificate — Learn, Code & Compete</div>
+          <div class="timeline-date">Past Experience</div>
+          <ul>
+            <li><strong>Programming languages:</strong> Python, Java, C++, Verilog</li>
+            <li><strong>Competitive programming:</strong> Advanced coding strategies and algorithmic challenges</li>
+            <li><strong>Data structures & algorithms:</strong> Arrays, linked lists, trees, and graphs</li>
+            <li><strong>Team collaboration:</strong> Partnered with mentors and peer organizers</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-folder-open"></i></span> Projects</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-org">Car Contact System</div>
+          <div class="timeline-role"><i class="fa-solid fa-mobile-screen"></i> Mobile Application Development</div>
+          <ul>
+            <li>Authored comprehensive Software Requirement Specifications (SRS) to define application scope and behavior.</li>
+            <li>Designed robust system architecture using Data Flow Diagrams (DFDs) and UML Use Case diagrams to clearly model user interactions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-graduation-cap"></i></span> Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-org">Beirut Arab University</div>
+          <div class="timeline-role"><i class="fa-solid fa-flask"></i> BSc Computer Science</div>
+          <div class="timeline-date">Expected Graduation: 2026 | Faculty of Science</div>
+          <span class="gpa-badge">GPA: 3.0 / 4.0</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- RIGHT COLUMN (Sidebar) -->
+  <aside class="sidebar">
+    
+    <section id="contact" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-address-card"></i></span> Contact</h2>
+      <div class="info-row">
+        <div class="info-label"><div class="icon-circle"><i class="fa-solid fa-phone"></i></div></div>
+        <div class="info-value"><a href="tel:+96176777251">+961 76 777 251</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label"><div class="icon-circle"><i class="fa-solid fa-envelope"></i></div></div>
+        <div class="info-value"><a href="mailto:alihassan76118@gmail.com">alihassan76118...</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label"><div class="icon-circle"><i class="fa-solid fa-location-dot"></i></div></div>
+        <div class="info-value">Beirut, Lebanon</div>
+      </div>
+    </section>
+
+    <section id="skills" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-code"></i></span> Skills</h2>
+      
+      <div class="skill-group">
+        <div class="skill-category">Programming</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Verilog</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-category">Web & Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Databases</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-category">Concepts</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Data Structures</span>
+          <span class="skill-tag">Algorithms</span>
+          <span class="skill-tag">UML / DFD</span>
+          <span class="skill-tag">Networks</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="languages" class="card reveal">
+      <h2><span class="section-icon"><i class="fa-solid fa-language"></i></span> Languages</h2>
+      <div class="info-row">
+        <span class="info-label">Arabic</span>
+        <span class="info-value">Native</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">English</span>
+        <span class="info-value">Professional</span>
+      </div>
+    </section>
+
+  </aside>
+</main>
+
+<footer>
+  <p><i class="fa-solid fa-code" style="color:var(--primary);margin-right:6px"></i> &copy; 2026 Ali Hassan &nbsp;·&nbsp; Beirut, Lebanon</p>
+</footer>
+
+<!-- ── Fixed Buttons ── -->
+<div class="fab-container">
+  <button class="fab" id="btn-top" title="Back to top" style="display: none;"><i class="fa-solid fa-arrow-up"></i></button>
+  <button class="fab" id="btn-dark" title="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+</div>
+
+<script>
+  /* ── Scroll Reveal ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80); // Staggered fade in
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Typewriter Effect ── */
+  const nameEl = document.getElementById('hero-name');
+  const nameText = nameEl.textContent.trim();
+  nameEl.textContent = '';
+  nameEl.style.cssText += 'border-right:3px solid var(--primary); display:inline-block;';
+  let idx = 0;
+  const type = () => {
+    if (idx < nameText.length) { nameEl.textContent += nameText[idx++]; setTimeout(type, 80); }
+    else { setTimeout(() => nameEl.style.borderRight = 'transparent', 800); }
+  };
+  setTimeout(type, 400);
+
+  /* ── Theme Toggle (Dark/Light) ── */
+  const darkBtn = document.getElementById('btn-dark');
+  let isDark = localStorage.getItem('cvTheme') === 'dark';
+  
+  const applyTheme = () => {
+    if (isDark) {
+      document.body.classList.add('dark');
+      darkBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    } else {
+      document.body.classList.remove('dark');
+      darkBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+    localStorage.setItem('cvTheme', isDark ? 'dark' : 'light');
+  };
+  
+  applyTheme();
+  darkBtn.addEventListener('click', () => { isDark = !isDark; applyTheme(); });
+
+  /* ── Scroll-to-top logic ── */
+  const topBtn = document.getElementById('btn-top');
+  window.addEventListener('scroll', () => {
+    topBtn.style.display = window.scrollY > 500 ? 'flex' : 'none';
+  }, { passive: true });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
+ FIX IT FOR ME FUL CODE <section>
+  <h2>Education</h2>
+  <div class="scrollable-content">
+    <div class="timeline">
+       </div>
+  </div>
+</section>
