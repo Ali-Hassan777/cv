@@ -26,7 +26,7 @@ body {
   line-height: 1.7;
 }
 
-/* ===== PAGE 1: HERO (Maintains your original high-impact design) ===== */
+/* ===== PAGE 1: HERO ===== */
 .page-hero {
   min-height: 100vh;
   background: #1a1a2e;
@@ -40,18 +40,17 @@ body {
   overflow: hidden;
 }
 
-/* ===== PAGE 2: CV CONTENT (Pro Layout) ===== */
+/* ===== PAGE 2: CV CONTENT ===== */
 .page-cv { min-height: 100vh; padding: 3rem 1rem; }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 320px; /* Sidebar layout */
+  grid-template-columns: 1fr 320px;
   gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Responsive: Stack columns on mobile */
 @media (max-width: 850px) {
   .container { grid-template-columns: 1fr; }
 }
@@ -80,52 +79,13 @@ section h2 {
   gap: 0.8rem;
 }
 
-/* ===== TIMELINE & CONTENT ===== */
-.timeline { position: relative; padding-left: 1.5rem; border-left: 2px solid var(--accent-light); }
-
-.timeline-item { margin-bottom: 2rem; position: relative; }
-.timeline-dot {
-  position: absolute; left: -2.1rem; top: 5px;
-  width: 12px; height: 12px;
-  background: var(--primary);
-  border-radius: 50%;
-  box-shadow: 0 0 0 4px var(--accent-light);
+/* ===== FIX FOR LONG SECTIONS (NEW) ===== */
+.scrollable-content {
+  max-height: 450px; /* Limits height of long lists */
+  overflow-y: auto;
+  padding-right: 10px;
 }
 
-.timeline-org { font-weight: 700; font-size: 1.05rem; }
-.timeline-role { 
-  font-size: 0.8rem; color: var(--primary); 
-  text-transform: uppercase; font-weight: 600; margin-bottom: 0.5rem; 
-}
-
-/* ===== SKILLS & BADGES ===== */
-.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.skill-tag {
-  background: var(--accent-light);
-  color: var(--primary);
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-/* ===== CONTACT & LISTS ===== */
-.info-row {
-  display: flex; justify-content: space-between;
-  padding: 10px 0; border-bottom: 1px solid #f0f0f0;
-}
-.icon-circle {
-  width: 32px; height: 32px;
-  background: var(--accent-light);
-  color: var(--primary);
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 8px;
-}
-
-/* ===== ANIMATIONS ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* Custom Scrollbar for the section */
+.scrollable-content::-webkit-scrollbar { width: 6px; }
+.scrollable-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 4px;
